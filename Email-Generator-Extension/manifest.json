@@ -10,7 +10,7 @@
   ],
 
   "host_permissions": [
-    "http://localhost:8080/*",
+    "https://ai-email-generator-1-3skg.onrender.com/api/email/generate",
     "*://mail.google.com/*"
   ],
 
