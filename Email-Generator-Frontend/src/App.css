@@ -69,8 +69,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 48px 8vw;
+  padding: 18px 10vw;
 }
 
 .console-panel {
