@@ -1,0 +1,49 @@
+# Ignore environment files
+.env
+.env.*
+
+# Maven
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Eclipse / STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+# Logs
+*.log
+
+# Java compiled files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+*.nar
+
+# Crash logs
+hs_err_pid*
+replay_pid*
