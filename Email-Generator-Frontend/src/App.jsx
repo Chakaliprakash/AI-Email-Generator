@@ -1,19 +1,15 @@
 import { useState } from "react";
 import "./App.css";
 import axios from "axios";
+import carBg from "./assets/hello_extensions.png";
 
-import {
-  Box,
-  Button,
-  CircularProgress,
-  Container,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+const TONES = [
+  { label: "Auto", value: "" },
+  { label: "Professional", value: "Professional" },
+  { label: "Friendly", value: "Friendly" },
+  { label: "Casual", value: "Casual" },
+  { label: "Formal", value: "Formal" },
+];
 
 function App() {
   const [emailContent, setEmailContent] = useState("");
@@ -21,10 +17,11 @@ function App() {
   const [generatedReply, setGeneratedReply] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = async () => {
     if (!emailContent.trim()) {
-      setError("Please enter the original email.");
+      setError("Enter the original email before generating a reply.");
       return;
     }
 
@@ -35,15 +32,8 @@ function App() {
     try {
       const response = await axios.post(
         "http://localhost:8080/api/email/generate",
-        {
-          emailContent,
-          tone,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { emailContent, tone },
+        { headers: { "Content-Type": "application/json" } }
       );
 
       setGeneratedReply(
@@ -57,11 +47,11 @@ function App() {
       if (err.response) {
         setError(
           err.response.data?.message ||
-            "Server error while generating the email."
+            "The server hit an error while generating the reply."
         );
       } else if (err.request) {
         setError(
-          "Cannot connect to the backend. Make sure Spring Boot is running on port 8080."
+          "Can't reach the backend. Make sure Spring Boot is running on port 8080."
         );
       } else {
         setError("Something went wrong.");
@@ -71,104 +61,134 @@ function App() {
     }
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(generatedReply);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1600);
+  };
+
   return (
-    <Container maxWidth="md" sx={{ py: 5 }}>
-      <Typography
-        variant="h3"
-        align="center"
-        gutterBottom
-        fontWeight="bold"
-      >
-        AI Email Reply Generator
-      </Typography>
+    <div className="app-shell">
+      <img className="app-bg" src={carBg} alt="" aria-hidden="true" />
+      <div className="app-scrim" />
 
-      <Box
-        sx={{
-          mt: 4,
-          p: 3,
-          borderRadius: 3,
-          boxShadow: 3,
-          bgcolor: "#fff",
-        }}
-      >
-        <TextField
-          fullWidth
-          multiline
-          rows={8}
-          label="Original Email Content"
-          value={emailContent}
-          onChange={(e) => setEmailContent(e.target.value)}
-          sx={{ mb: 3 }}
-        />
+      <div className="app-content">
+        <main className="console-panel">
+          <div className="console-eyebrow">
+            <span className="eyebrow-dot" />
+            AI REPLY ENGINE
+          </div>
 
-        <FormControl fullWidth sx={{ mb: 3 }}>
-          <InputLabel id="tone-label">Tone</InputLabel>
+          <h1 className="console-heading">
+            Draft replies
+            <br />
+            at full throttle.
+          </h1>
+          <p className="console-sub">
+            Paste the email you received. Pick a mode. Get a reply ready to send.
+          </p>
 
-          <Select
-            labelId="tone-label"
-            value={tone}
-            label="Tone"
-            onChange={(e) => setTone(e.target.value)}
-          >
-            <MenuItem value="">None</MenuItem>
-            <MenuItem value="Professional">Professional</MenuItem>
-            <MenuItem value="Friendly">Friendly</MenuItem>
-            <MenuItem value="Casual">Casual</MenuItem>
-            <MenuItem value="Formal">Formal</MenuItem>
-          </Select>
-        </FormControl>
-
-        <Button
-          fullWidth
-          variant="contained"
-          size="large"
-          disabled={loading || !emailContent.trim()}
-          onClick={handleSubmit}
-        >
-          {loading ? (
-            <CircularProgress size={24} color="inherit" />
-          ) : (
-            "Generate Reply"
-          )}
-        </Button>
-
-        {error && (
-          <Typography color="error" sx={{ mt: 3 }}>
-            {error}
-          </Typography>
-        )}
-
-        {generatedReply && (
-          <Box sx={{ mt: 4 }}>
-            <Typography variant="h5" gutterBottom>
-              Generated Reply
-            </Typography>
-
-            <TextField
-              fullWidth
-              multiline
-              rows={10}
-              value={generatedReply}
-              slotProps={{
-                input: {
-                  readOnly: true,
-                },
-              }}
+          <div className="field-group">
+            <label className="field-label" htmlFor="email-input">
+              Original message // input
+            </label>
+            <textarea
+              id="email-input"
+              className="field-textarea"
+              rows={7}
+              placeholder="Paste the email you're replying to…"
+              value={emailContent}
+              onChange={(e) => setEmailContent(e.target.value)}
             />
+          </div>
 
-            <Button
-              variant="outlined"
-              sx={{ mt: 2 }}
-              onClick={() => {
-                navigator.clipboard.writeText(generatedReply);
-              }}
-            >
-              Copy to Clipboard
-            </Button>
-          </Box>
-        )}
-      </Box>
-    </Container>
+          <div className="field-group">
+            <span className="field-label">Reply tone // select mode</span>
+            <div className="tone-grid" role="group" aria-label="Reply tone">
+              {TONES.map((t) => (
+                <button
+                  key={t.label}
+                  type="button"
+                  className={
+                    "tone-pill" + (tone === t.value ? " tone-pill--active" : "")
+                  }
+                  onClick={() => setTone(t.value)}
+                  aria-pressed={tone === t.value}
+                >
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="generate-btn"
+            disabled={loading || !emailContent.trim()}
+            onClick={handleSubmit}
+          >
+            <span className="generate-btn__label">
+              {loading ? "Generating…" : "Generate reply"}
+            </span>
+            <span className="generate-btn__gauge" aria-hidden="true">
+              <span
+                className={
+                  "generate-btn__sweep" + (loading ? " is-active" : "")
+                }
+              />
+            </span>
+          </button>
+
+          {error && (
+            <div className="alert-strip" role="alert">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 3L22 20H2L12 3Z"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M12 10V14"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                />
+                <circle cx="12" cy="17" r="1" fill="currentColor" />
+              </svg>
+              {error}
+            </div>
+          )}
+
+          {generatedReply && (
+            <div className="output-panel">
+              <div className="output-header">
+                <span className="field-label">Generated reply // output</span>
+                <button
+                  type="button"
+                  className="copy-btn"
+                  onClick={handleCopy}
+                >
+                  {copied ? "Copied" : "Copy"}
+                </button>
+              </div>
+              <textarea
+                className="output-text"
+                rows={9}
+                value={generatedReply}
+                readOnly
+              />
+            </div>
+          )}
+        </main>
+      </div>
+    </div>
   );
 }
 
