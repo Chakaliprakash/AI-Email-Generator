@@ -65,11 +65,12 @@ body {
 }
 
 .app-content {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 18px 10vw;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 18px 10vw;
 }
 
 .console-panel {
