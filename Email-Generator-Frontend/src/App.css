@@ -70,7 +70,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start; 
-    padding: 18px 10vw;
+    padding: 10px 10vw;
 }
 
 .console-panel {
