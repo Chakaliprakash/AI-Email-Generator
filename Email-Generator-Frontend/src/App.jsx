@@ -3,7 +3,7 @@ import "./App.css";
 import axios from "axios";
 import carBg from "./assets/hello_extensions.png";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://ai-email-generator-frontend-99q2.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://ai-email-generator-1-3skg.onrender.com";
 
 const TONES = [
   { label: "Auto", value: "" },
