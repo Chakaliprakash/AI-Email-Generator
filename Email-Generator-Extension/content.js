@@ -1,6 +1,6 @@
 console.log("Extension Loaded");
 
-const API_URL = 'http://localhost:8080/api/email/generate';
+const API_URL = 'https://ai-email-generator-1-3skg.onrender.com/api/email/generate';
 
 const TONES = ['Professional', 'Friendly', 'Concise', 'Formal'];
 

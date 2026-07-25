@@ -31,7 +31,7 @@ function App() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/email/generate",
+        "https://ai-email-generator-1-3skg.onrender.com/api/email/generate",
         { emailContent, tone },
         { headers: { "Content-Type": "application/json" } }
       );
