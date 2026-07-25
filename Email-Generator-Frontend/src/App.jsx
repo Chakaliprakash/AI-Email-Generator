@@ -87,7 +87,7 @@ function App() {
             at full throttle.
           </h1>
           <p className="console-sub">
-            Paste the email you received. Pick a mode. Get a reply ready to send.
+            Paste the email you received...
           </p>
 
           <div className="field-group">

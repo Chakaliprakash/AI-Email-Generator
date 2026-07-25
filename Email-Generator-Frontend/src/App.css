@@ -309,6 +309,30 @@ body {
   display: flex;
   flex-direction: column;
   animation: rise 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.output-panel::after {
+  content: "PRAKASH CHAKALI";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  color: rgba(242, 237, 227, 0.06);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.output-panel > * {
+  position: relative;
+  z-index: 1;
 }
 
 .output-panel .output-text {
