@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: email-writer-backend
+    runtime: docker
+    plan: free
+    region: oregon
+    rootDir: Email-Generator Backend
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: GEMINI_URL
+        sync: false
+      - key: GEMINI_KEY
+        sync: false
