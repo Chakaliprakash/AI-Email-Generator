@@ -315,15 +315,15 @@ body {
 
 .output-panel::after {
   content: "Prakash Chakali";
-  position:relative;
-  top: 90%;
+  position: absolute;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-30deg);
   font-family: "Arial", sans-serif;
   font-weight: 700;
   font-size: 28px;
   letter-spacing: 0.08em;
-  color: rgba(242, 237, 227, 0.062);
+  color: rgba(242, 237, 227, 0.368);
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
