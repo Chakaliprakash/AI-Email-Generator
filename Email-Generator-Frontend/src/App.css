@@ -65,12 +65,13 @@ body {
 }
 
 .app-content {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; 
-    padding: 20px 2vw;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  padding: 48px 8vw;
 }
 
 .console-panel {
@@ -295,20 +296,34 @@ body {
 }
 
 .output-panel {
-  margin-top: 26px;
-  padding-top: 22px;
-  border-top: 1px solid var(--glass-border);
+  width: 100%;
+  max-width: 380px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  padding: 28px 26px;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
   animation: rise 0.35s ease;
+}
+
+.output-panel .output-text {
+  flex: 1;
+  min-height: 320px;
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateX(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -342,6 +357,21 @@ body {
   background: rgba(232, 162, 76, 0.12);
 }
 
+@media (max-width: 960px) {
+  .app-content {
+    flex-direction: column;
+  }
+
+  .console-panel,
+  .output-panel {
+    max-width: 100%;
+  }
+
+  .output-panel .output-text {
+    min-height: 200px;
+  }
+}
+
 @media (max-width: 720px) {
   .app-content {
     justify-content: center;
@@ -358,8 +388,8 @@ body {
       );
   }
 
-  .console-panel {
-    max-width: 100%;
+  .console-panel,
+  .output-panel {
     padding: 28px 22px;
     background: var(--glass-strong);
   }
