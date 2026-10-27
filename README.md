@@ -1,3 +1,19 @@
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=venom&height=190&color=0:111827,50:4338ca,100:818cf8&text=AI%20Email%20Generator&fontColor=ffffff&fontSize=40&fontAlignY=42&desc=AI%20%7C%20Backend%20%7C%20Frontend&descAlignY=65&descSize=15" width="100%" alt="AI Email Generator banner"/>
+
+![AI](https://img.shields.io/badge/AI-Enabled-334155)
+![Web%20App](https://img.shields.io/badge/Web%20App-Project-0f766e)
+![Extension](https://img.shields.io/badge/Extension-Built%20with%20care-64748b)
+
+**AI-assisted email drafting across web and browser extension.**
+
+[Repository](https://github.com/Chakaliprakash/AI-Email-Generator) · [Issues](https://github.com/Chakaliprakash/AI-Email-Generator/issues)
+
+</div>
+
+---
+
 # AI Email Generator
 
 An AI-assisted email generation project organized into backend, frontend, and browser-extension components.
