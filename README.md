@@ -24,7 +24,7 @@ An AI-assisted email writing project with a backend, frontend, and browser exten
 ## Getting Started
 
 1. Clone the repository.
-2. Review the README and configuration in each component directory.
+2. Review the documentation in each component directory.
 3. Install dependencies for each component.
 4. Set the required API keys and environment variables locally.
 5. Run each component using its documented commands.
