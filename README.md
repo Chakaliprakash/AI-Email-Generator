@@ -13,25 +13,56 @@
 
 # AI Email Generator
 
-An AI-assisted email writing project with a backend, frontend, and browser extension.
+An AI-assisted email writing tool with a web interface, backend API, and browser extension.
 
 ## Components
 
-- `Email-Generator Backend/` — API service.
-- `Email-Generator-Frontend/` — web interface.
-- `Email-Generator-Extension/` — browser extension.
+- **Backend:** Spring Boot API that connects to the configured Gemini endpoint.
+- **Frontend:** React application built with Vite and Material UI.
+- **Browser extension:** Adds email-writing assistance to supported browser pages.
 
-## Getting Started
+## Technology Stack
 
-1. Clone the repository.
-2. Review the documentation in each component directory.
-3. Install dependencies for each component.
-4. Set the required API keys and environment variables locally.
-5. Run each component using its documented commands.
+- Java 21 and Spring Boot
+- React, Vite, and Material UI
+- Gemini API integration
+- Docker and Render deployment configuration
+
+## Run Locally
+
+### Backend
+
+Configure `GEMINI_URL` and `GEMINI_KEY` as environment variables, then run:
+
+```bash
+cd "Email-Generator Backend"
+./mvnw spring-boot:run
+```
+
+### Frontend
+
+```bash
+cd Email-Generator-Frontend
+npm install
+npm run dev
+```
+
+Set the frontend API URL to the backend address used in your environment.
+
+### Browser Extension
+
+1. Open your browser's extension management page.
+2. Enable developer mode.
+3. Choose **Load unpacked**.
+4. Select the `Email-Generator-Extension/` directory.
+
+## Deployment
+
+The repository includes a Render service definition and a Dockerfile for the backend. Configure the required environment variables in the deployment environment.
 
 ## Security
 
-Do not commit API keys or other secrets. Store sensitive values in environment variables.
+Keep API keys in environment variables. Do not commit credentials or production secrets.
 
 ## Author
 
