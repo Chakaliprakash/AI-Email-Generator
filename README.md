@@ -1,12 +1,9 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&height=190&color=0:111827,50:4338ca,100:818cf8&text=AI%20Email%20Generator&fontColor=ffffff&fontSize=40&fontAlignY=42&desc=AI%20%7C%20Backend%20%7C%20Frontend&descAlignY=65&descSize=15" width="100%" alt="AI Email Generator banner"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&height=195&color=0:111827,50:4338ca,100:818cf8&text=AI%20Email%20Generator&fontColor=ffffff&fontSize=40&fontAlignY=40&desc=AI%20Email%20Assistant%20%7C%20Web%20App%20%2B%20Browser%20Extension&descAlignY=64&descSize=15" width="100%" alt="AI Email Generator banner"/>
 
-![AI](https://img.shields.io/badge/AI-Enabled-334155)
-![Web%20App](https://img.shields.io/badge/Web%20App-Project-0f766e)
-![Extension](https://img.shields.io/badge/Extension-Built%20with%20care-64748b)
-
-**AI-assisted email drafting across web and browser extension.**
+![AI](https://img.shields.io/badge/AI-Email%20Generation-4338ca?style=for-the-badge)
+![Clients](https://img.shields.io/badge/Clients-Web%20%2B%20Extension-64748b?style=for-the-badge)
 
 [Repository](https://github.com/Chakaliprakash/AI-Email-Generator) · [Issues](https://github.com/Chakaliprakash/AI-Email-Generator/issues)
 
